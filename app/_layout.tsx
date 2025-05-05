@@ -1,29 +1,29 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { Stack } from "expo-router";
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import * as SplashScreen from 'expo-splash-screen';
+import {useEffect} from 'react';
 
-import { useColorScheme } from '@/hooks/useColorScheme';
+SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+  // const { startTokenExpirationCheck } = useAuthStore()
+  const [loaded, error] = useFonts({
+    'Satoshi-Black': require('@/assets/fonts/Satoshi-Black.otf'),
+    'Satoshi-Bold': require('@/assets/fonts/Satoshi-Bold.otf'),
+    'Satoshi-Medium': require('@/assets/fonts/Satoshi-Medium.otf'),
+    'Satoshi-Regular': require('@/assets/fonts/Satoshi-Regular.otf'),
+    'Satoshi-Light': require('@/assets/fonts/Satoshi-Light.otf'),
   });
 
-  if (!loaded) {
-    // Async font loading only occurs in development.
+  useEffect(() => {
+    if (loaded || error) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded, error]);
+  // useEffect( () => startTokenExpirationCheck(), [])
+
+  if (!loaded && !error) {
     return null;
   }
-
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
-  );
+  return <Stack screenOptions={{headerShown: false}}/>;
 }
