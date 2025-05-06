@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View, Text, Pressable } from 'react-native'
 import { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { colors } from '@/constants'
@@ -24,14 +24,7 @@ async function onSubmit() {
 }
 const signup = () => {
   const [loading, setLoading] = useState(false)
-  const [formData, setFormData] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
-    mobile: "",
-    password: ""
-  });
-  const { control, handleSubmit, setValue, formState: { errors } } = useForm({
+  const { control, handleSubmit, formState: { errors } } = useForm({
     mode: 'onBlur',
     defaultValues: {
       firstname: "",
@@ -92,9 +85,15 @@ const signup = () => {
               textColor="#000"
               title={loading ? "Loading..." : "Sign Up"}
             />
+            <View style={{flexDirection: "row", alignItems: "baseline", justifyContent: "center"}}>
+              <Text style={{textAlign: "center", color: "#fff", marginVertical: 10}}>Already have an account. </Text>
+              <Pressable onPress={() => router.navigate("/(auth)/signin")}>
+                <Text style={{textAlign: "center", color: colors.light.primary}}>Login</Text>
+              </Pressable>
+            </View>
           </View>
         </KeyboardAwareScrollView>
-        <ModalView/>
+        {/* <ModalView/> */}
         <StatusBar style='auto'/>
     </SafeAreaView>
   )

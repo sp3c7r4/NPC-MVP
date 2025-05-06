@@ -14,6 +14,7 @@ interface ButtonProps {
   icon?: React.ReactNode; // Accepts any React Node for flexibility
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
+  disabled?:boolean
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -28,14 +29,16 @@ const Button: React.FC<ButtonProps> = ({
   icon,
   style,
   textStyle,
+  disabled,
 }) => {
   return (
     <TouchableOpacity
+      disabled={disabled}
       onPress={onPress}
       style={[
         styles.button,
         {
-          backgroundColor: type === "normal" ? color : "transparent",
+          backgroundColor: type === "normal" ? disabled ? "grey" : color : "transparent",
           borderColor: type === "outline" ? color : "transparent",
           borderWidth: type === "outline" ? 1 : 0,
           width,

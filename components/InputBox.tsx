@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: fontsizes.paragraph1,
     fontFamily: "Satoshi-Bold",
-    color: colors.light.background_white,
+    color: "#000",
   },
   error: {
     fontSize: 10,
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     height: 55,
-    backgroundColor: "#383838",
+    backgroundColor: "rgba(0,0,0,0.4)",
     borderRadius: 10,
     justifyContent: "center",
     paddingHorizontal: 10,
