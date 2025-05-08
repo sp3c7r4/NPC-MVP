@@ -14,7 +14,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 const registerData = [
   { key: "State", label: 'State', placeholder: "E.g Abuja" },
   { key: "LGA", label: "LGA", placeholder: "Enter LGA"},
-  { key: "Ward/Community", label: "Ward/Community", placeholder: "Enter word or community" },
+  { key: "Ward/Community", label: "Ward/Community", placeholder: "Enter ward or community" },
   { key: "Census Date", label: "Census Date", placeholder: "DD/MM/YY" },
   { key: "Gender", label: "Gender", placeholder: "Male/Female" },
 ];
