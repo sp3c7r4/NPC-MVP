@@ -1,8 +1,6 @@
 import { View, Text, Image, Pressable } from 'react-native'
 import React from 'react'
-import { fontsizes } from '@/constants'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { router } from 'expo-router'
 
 const Header = ({title, message, onPress}: {onPress: () => void, title: string, message: string}) => {
   return (
